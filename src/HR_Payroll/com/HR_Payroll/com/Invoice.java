@@ -1,19 +1,22 @@
 /*
 Griffiths Marlon - 2301010569
 Romario McLymont - 2301010275
-Delvian Brown -
+Delvian Brown - 230101767
 Shanelle Farqurson -
+Jhenelle Walker -
 */
 
 package HR_Payroll.com;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-// Invoice Class
+//Invoice Class
 public class Invoice implements Payable {
     private String partNum;
-    private String partDes; // part description
+    private String partDes;
     private int quantity;
     private double pPi; // price Per Item
 
@@ -32,7 +35,8 @@ public class Invoice implements Payable {
     @Override
     public void writeToFile() {
         try (FileWriter writer = new FileWriter("invoice.txt", true)) {
-            writer.write("Invoice: " + partNum + ", Amount: " + getPaymentAmount() + "\n");
+            writer.write("Invoice: " + partNum + ", Amount: " + getPaymentAmount() +
+                    ", Date: " + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + "\n");
         } catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());
         }

@@ -1,14 +1,17 @@
 /*
 Griffiths Marlon - 2301010569
 Romario McLymont - 2301010275
-Delvian Brown -
+Delvian Brown - 230101767
 Shanelle Farqurson -
+Jhenelle Walker -
 */
 
 package HR_Payroll.com;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 // BasePlusCommissionEmployee Class
 class BasePlusCommissionEmployee extends CommissionEmployee {
@@ -27,7 +30,8 @@ class BasePlusCommissionEmployee extends CommissionEmployee {
     @Override
     public void writeToFile() {
         try (FileWriter writer = new FileWriter("paystub.txt", true)) {
-            writer.write("Employee: " + getName() + ", Payment: " + getPaymentAmount() + "\n");
+            writer.write("Employee: " + getName() + ", Payment: " + getPaymentAmount() +
+                    ", Date: " + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + "\n");
         } catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());
         }

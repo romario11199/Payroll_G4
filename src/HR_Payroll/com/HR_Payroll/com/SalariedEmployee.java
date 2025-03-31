@@ -1,31 +1,28 @@
 /*
 Griffiths Marlon - 2301010569
 Romario McLymont - 2301010275
-Delvian Brown -
+Delvian Brown - 230101767
 Shanelle Farqurson -
+Jhenelle Walker -
 */
+
 package HR_Payroll.com;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
-// CommissionEmployee Class
-class CommissionEmployee extends Employee {
-    private double grossSales;
-    private double commissionRate;
+// SalariedEmployee Class
+public class SalariedEmployee extends Employee {
+    private double weeklySalary;
 
-    public CommissionEmployee(String name, String SSN, double sales, double commissionRate) throws InvalidEmployeeDataException {
+    public SalariedEmployee(String name, String SSN, double weeklySalary) {
         super(name, SSN);
-        if (sales < 0 || commissionRate < 0) {
-            throw new InvalidEmployeeDataException("Sales and commission rate must be non-negative.");
-        }
-        this.grossSales = sales;
-        this.commissionRate = commissionRate;
+        this.weeklySalary = weeklySalary;
     }
 
     @Override
     public double getPaymentAmount() {
-        return grossSales * commissionRate;
+        return weeklySalary;
     }
 
     @Override
